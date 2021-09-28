@@ -1,0 +1,46 @@
+﻿@model net_car_ASPNETCORE.Models.Manutencao
+
+@{
+	ViewData["Title"] = "Delete";
+	Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+}
+@section head {
+	<link rel="stylesheet" runat="server" type="text/css" href="~/css/NetCarMasterStyles.css" />
+	<link rel="stylesheet" runat="server" type="text/css" href="~/css/MotoristaDelete.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+}
+
+<div class="container-delete">
+	<div style="margin-top: 50px"></div>
+	<div>
+		<h1 class="title-delete">Cancelar Manutenção</h1>
+	</div>
+
+	<hr style="width: 90%; border: 1px solid lightgray" />
+	<br />
+	<span class="subtitle">Tem certeza que gostaria de cancelar essa manutenção?</span>
+	<div class="content-container">
+		<span class="label">@Html.DisplayNameFor(model => model.ordem_servico)</span>
+		<span class="content">@Html.DisplayFor(modelItem => modelItem.ordem_servico)</span>
+		<span class="label">@Html.DisplayNameFor(model => model.veiculo)</span>
+		<span class="content">@Html.DisplayFor(modelItem => modelItem.veiculo)</span>
+		<span class="label">@Html.DisplayNameFor(model => model.tipo_manutencao)</span>
+		<span class="content">@Html.DisplayFor(modelItem => modelItem.tipo_manutencao)</span>
+		<span class="label">@Html.DisplayNameFor(model => model.custo_manutencao)</span>
+		<span class="content">R$ @Html.DisplayFor(modelItem => modelItem.custo_manutencao)</span>
+		<span class="label">@Html.DisplayNameFor(model => model.status)</span>
+		<span class="content">@Html.DisplayFor(modelItem => modelItem.status)</span>
+		<span class="label">@Html.DisplayNameFor(model => model.data_manutencao)</span>
+		<span class="content">@Html.DisplayFor(modelItem => modelItem.data_manutencao)</span>
+	</div>
+	<div class="btn-container">
+		<form asp-action="Delete">
+			<input type="hidden" asp-for="ordem_servico" />
+			<input type="submit" value="Cancelar" class="delete-btn" />
+		</form>
+		<div>
+			<a class="back-btn" asp-action="Index">Voltar</a>
+		</div>
+	</div>
+</div>

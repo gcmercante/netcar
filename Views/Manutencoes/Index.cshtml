@@ -1,0 +1,93 @@
+﻿@model IEnumerable<net_car_ASPNETCORE.Models.Manutencao>
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+}
+
+@section head {
+	<link rel="stylesheet" runat="server" type="text/css" href="~/css/NetCarMasterStyles.css" />
+	<link rel="stylesheet" runat="server" type="text/css" href="~/css/ClientIndex.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+}
+
+<div class="container-index">
+	<div style="margin-top: 50px"></div>
+	<div>
+		<h1 class="title-index">Dashboard</h1>
+	</div>
+
+
+	<hr style="width: 90%; border: 1px solid lightgray" />
+	<br />
+
+	<div class="new-contact">
+		<div class="new-contact-div">
+			<a asp-action="Create" id="create">+ Criar</a>
+		</div>
+	</div>
+	<div style="clear: both"></div>
+	<div class="tableContainer">
+		<table class="indexTable">
+			<tr id="header">
+				<td class="main-content">
+					@Html.DisplayNameFor(model => model.ordem_servico)
+				</td>
+				<td class="main-content">
+					@Html.DisplayNameFor(model => model.veiculo)
+				</td>
+				<td class="main-content">
+					@Html.DisplayNameFor(model => model.tipo_manutencao)
+				</td>
+				<td class="main-content">
+					@Html.DisplayNameFor(model => model.custo_manutencao)
+				</td>
+				<td class="main-content">
+					@Html.DisplayNameFor(model => model.status)
+				</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td class="main-content">
+						@Html.DisplayFor(modelItem => item.ordem_servico)
+					</td>
+					<td class="main-content">
+						@Html.DisplayFor(modelItem => item.veiculo)
+					</td>
+					<td class="main-content">
+						@Html.DisplayFor(modelItem => item.tipo_manutencao)
+					</td>
+					<td class="main-content">
+						R$ @Html.DisplayFor(modelItem => item.custo_manutencao)
+					</td>
+					<td class="main-content">
+						@Html.DisplayFor(modelItem => item.status)
+					</td>
+					<td></td>
+					<td></td>
+					<td>
+						<a asp-action="Edit" asp-route-id="@item.ordem_servico" class="material-icons" style="color: #707070; text-decoration: none; font-size: 18px">edit</a>
+					</td>
+					@if (item.status == "Em manutenção")
+					{
+						<td>
+							<a asp-action="Delete" asp-route-id="@item.ordem_servico" class="material-icons" style="color: #990000; text-decoration: none; font-size: 18px">delete</a>
+						</td>
+					}
+					else
+					{
+						<td>
+							<a onclick="return false;" class="material-icons" style="color: #707070; text-decoration: none; font-size: 18px">delete</a>
+						</td>
+					}
+				</tr>
+			}
+		</table>
+	</div>
+</div>

@@ -1,0 +1,50 @@
+﻿@model net_car_ASPNETCORE.Models.Veiculo
+@using net_car_ASPNETCORE.Controllers;
+
+@{
+	ViewData["Title"] = "Delete";
+	Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+	string placa = Util.formatPlaca(Model.placa);
+}
+
+@section head {
+	<link rel="stylesheet" runat="server" type="text/css" href="~/css/NetCarMasterStyles.css" />
+	<link rel="stylesheet" runat="server" type="text/css" href="~/css/VeiculoDelete.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+}
+
+<div class="container-delete">
+	<div style="margin-top: 50px"></div>
+	<div>
+		<h1 class="title-delete">Desativar Veículo</h1>
+	</div>
+
+	<hr style="width: 90%; border: 1px solid lightgray" />
+	<br />
+	<span class="subtitle">Tem certeza que gostaria de desativar esse veículo?</span>
+	<div class="content-container">
+		<span class="label">@Html.DisplayNameFor(model => model.documento_veiculo)</span>
+		<span class="content">@Html.DisplayFor(modelItem => modelItem.documento_veiculo)</span>
+		<span class="label">@Html.DisplayNameFor(model => model.modelo)</span>
+		<span class="content">@Html.DisplayFor(modelItem => modelItem.modelo)</span>
+		<span class="label">@Html.DisplayNameFor(model => model.marca)</span>
+		<span class="content">@Html.DisplayFor(modelItem => modelItem.marca)</span>
+		<span class="label">@Html.DisplayNameFor(model => model.placa)</span>
+		<span class="content">@Html.DisplayFor(modelItem => placa)</span>
+		<span class="label">@Html.DisplayNameFor(model => model.quilometragem)</span>
+		<span class="content">@Html.DisplayFor(modelItem => modelItem.quilometragem) km</span>
+		<span class="label">@Html.DisplayNameFor(model => model.status)</span>
+		<span class="content">@Html.DisplayFor(modelItem => modelItem.status)</span>
+
+	</div>
+	<div class="btn-container">
+		<form asp-action="Delete">
+			<input type="hidden" asp-for="documento_veiculo" />
+			<input type="submit" value="Desativar" class="delete-btn" />
+		</form>
+		<div>
+			<a class="back-btn" asp-action="Index">Voltar</a>
+		</div>
+	</div>
+</div>

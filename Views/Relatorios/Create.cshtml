@@ -1,0 +1,77 @@
+﻿@model net_car_ASPNETCORE.Models.Relatorio
+
+@{
+	ViewData["Title"] = "Create";
+	Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+}
+@section head {
+	<link rel="stylesheet" runat="server" type="text/css" href="~/css/NetCarMasterStyles.css" />
+	<link rel="stylesheet" runat="server" type="text/css" href="~/css/MotoristaCreate.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+	<script>
+		function alertBox() {
+			alert("Relatório enviado para o e-mail digitado!!");
+		}
+	</script>
+}
+
+<div class="container-create">
+	<div style="margin-top: 50px"></div>
+	<div>
+		<h1 class="title-create">Novo Relatório</h1>
+	</div>
+
+	<hr style="width: 90%; border: 1px solid lightgray" />
+	<br />
+	<div class="row">
+		<div class="col-md-4">
+			<form asp-action="Create">
+				<div class="form-group">
+					<div class="line">
+						<div class="form-fields">
+							<label class="form-label">Relatório</label><br />
+							<select asp-for="tipo_relatorio" class="client-dropdown">
+								<option selected>
+									Selecione um relatório
+								</option>
+								<option value="viagens">
+									Relatório de viagens
+								</option>
+								<option value="gastosviagem">
+									Gastos por viagem
+								</option>
+								<option value="gastos">
+									Gastos mensal
+								</option>
+								<option value="manutencao">
+									Relatório de manutenção
+								</option>
+								<option value="clientexmotorista">
+									Relação Cliente x Motorista
+								</option>
+								<option value="clientexveiculo">
+									Relação Cliente x Veículo
+								</option>
+							</select>
+						</div>
+						<div class="form-fields">
+						</div>
+					</div>
+					<div class="line">
+						<div class="form-fields">
+							<label asp-for="email" class="form-label"></label><br />
+							<input asp-for="email" class="form-input" required="required" /><br />
+							<span asp-validation-for="email"></span>
+						</div>
+						<div class="form-fields"></div>
+					</div>
+					<div class="btn-container">
+						<div>
+							<input type="submit" value="Criar" class="submit-btn" onclick="alertBox()" />
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

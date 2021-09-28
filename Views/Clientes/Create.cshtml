@@ -1,0 +1,74 @@
+﻿@model net_car_ASPNETCORE.Models.Cliente
+
+@{
+	ViewData["Title"] = "Create";
+	Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+}
+@section head {
+	<link rel="stylesheet" runat="server" type="text/css" href="~/css/NetCarMasterStyles.css" />
+	<link rel="stylesheet" runat="server" type="text/css" href="~/css/ClientCreate.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+}
+
+<div class="container-create">
+	<div style="margin-top: 50px"></div>
+	<div>
+		<h1 class="title-create">Novo Cliente</h1>
+	</div>
+
+	<hr style="width: 90%; border: 1px solid lightgray" />
+	<br />
+	<div class="row">
+		<div class="col-md-4">
+			<form asp-action="Create">
+				<div class="form-group">
+					<div asp-validation-summary="ModelOnly"></div>
+					<div class="line">
+						<div class="form-fields">
+							<label asp-for="cnpj" class="form-label"></label><br />
+							<input asp-for="cnpj" class="form-input" required="required" maxlength="14"/><br />
+							<span asp-validation-for="cnpj"></span>
+						</div>
+						<div class="form-fields">
+							<label asp-for="nome" class="form-label"></label><br />
+							<input asp-for="nome" class="form-input" required="required" /><br />
+							<span asp-validation-for="nome"></span>
+						</div>
+					</div>
+					<div class="line">
+						<div class="form-fields">
+							<label asp-for="segmento" class="form-label"></label><br />
+							<input asp-for="segmento" class="form-input" required="required" /><br />
+							<span asp-validation-for="segmento"></span>
+						</div>
+						<div class="form-fields">
+							<label asp-for="email" class="form-label"></label><br />
+							<input asp-for="email" type="email" class="form-input" required="required" /><br />
+							<span asp-validation-for="email"></span>
+						</div>
+					</div>
+					<div class="line">
+						<div class="form-fields">
+							<label asp-for="user" class="form-label"></label><br />
+							<input asp-for="user" class="form-input" required="required" /><br />
+							<span asp-validation-for="user"></span>
+						</div>
+						<div class="form-fields">
+							<label asp-for="senha" class="form-label"></label><br />
+							<input asp-for="senha" type="password" class="form-input" required="required" /><br />
+							<span asp-validation-for="senha"></span>
+						</div>
+					</div>
+					<div class="btn-container">
+						<div>
+							<input type="submit" value="Criar" class="submit-btn" asp-for="status" />
+						</div>
+						<div>
+							<a class="back-btn" asp-action="Index">Voltar</a>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

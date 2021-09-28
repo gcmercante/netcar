@@ -1,0 +1,66 @@
+﻿/*INDEX CSS*/
+.indexTable {
+	width: 100%;
+	border-collapse: collapse;
+	color: #4e4e4e;
+}
+
+	.indexTable tr > td {
+		border-bottom: 2px solid;
+		border-color: lightgray;
+		padding: 10px;
+	}
+
+#header {
+	font-weight: bold;
+}
+
+div.tableContainer {
+	margin: auto;
+	width: 70%;
+}
+
+.edit {
+	text-align: right;
+}
+
+.main-content {
+	width: 18%;
+}
+
+.new-contact {
+	background-color: #b4000b;
+	padding: 5px;
+	width: 100px;
+	border-radius: 5px;
+	float: right;
+	margin-right: 15%;
+}
+
+.new-contact-div {
+	margin: auto;
+	width: 98%;
+	height: 25px;
+	text-align: center;
+}
+
+#create {
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+}
+
+.container-index {
+	background-color: rgb(245, 245, 245);
+	max-height: 2000px;
+	min-height: 1000px;
+	width: 95%;
+	margin: auto;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	color: #4e4e4e;
+}
+
+.title-index {
+	margin-left: 15%;
+	padding: 40px;
+}

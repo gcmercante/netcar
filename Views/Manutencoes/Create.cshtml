@@ -1,0 +1,79 @@
+﻿@model net_car_ASPNETCORE.Models.Manutencao
+
+@{
+	ViewData["Title"] = "Create";
+	Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+}
+
+@section head {
+	<link rel="stylesheet" runat="server" type="text/css" href="~/css/NetCarMasterStyles.css" />
+	<link rel="stylesheet" runat="server" type="text/css" href="~/css/VeiculoCreate.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+}
+
+<div class="container-create">
+	<div style="margin-top: 50px"></div>
+	<div>
+		<h1 class="title-create">Nova Manutenção</h1>
+	</div>
+
+	<hr style="width: 90%; border: 1px solid lightgray" />
+	<br />
+	<div class="row">
+		<div class="col-md-4">
+			<form asp-action="Create">
+				<div class="form-group">
+					<div asp-validation-summary="ModelOnly"></div>
+					<div class="line">
+						<div class="form-fields">
+							<label asp-for="ordem_servico" class="form-label"></label><br />
+							<input asp-for="ordem_servico" class="form-input" required="required" maxlength="10" /><br />
+							<span asp-validation-for="ordem_servico"></span>
+						</div>
+						<div class="form-fields">
+							<label class="form-label">Veículo</label><br />
+							<select asp-for="veiculo" class="client-dropdown">
+								<option selected>
+									Selecione um cliente
+								</option>
+								@for (int i = 0; i < ViewBag.veiculoCount; i++)
+								{
+									<option value="@ViewBag.valueDocumento[i]">@ViewBag.documento[i]</option>
+								}
+							</select>
+						</div>
+					</div>
+					<div class="line">
+						<div class="form-fields">
+							<label class="form-label">Tipo da Manutenção</label><br />
+							<select asp-for="tipo_manutencao" class="client-dropdown">
+								<option selected>
+									Selecione um cliente
+								</option>
+								<option value="Preventiva">
+									Preventiva
+								</option>
+								<option value="Corretiva">
+									Corretiva
+								</option>
+							</select>
+						</div>
+						<div class="form-fields">
+							<label asp-for="custo_manutencao" class="form-label"></label><br />
+							<input asp-for="custo_manutencao" class="form-input" required="required" /><br />
+							<span asp-validation-for="custo_manutencao"></span>
+						</div>
+					</div>
+					<div class="btn-container">
+						<div>
+							<input type="submit" value="Criar" class="submit-btn" asp-for="status" />
+						</div>
+						<div>
+							<a class="back-btn" asp-action="Index">Voltar</a>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

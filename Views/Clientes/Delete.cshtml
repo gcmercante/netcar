@@ -1,0 +1,43 @@
+﻿@model net_car_ASPNETCORE.Models.Cliente
+
+@{
+	ViewData["Title"] = "Delete";
+	Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+}
+@section head {
+	<link rel="stylesheet" runat="server" type="text/css" href="~/css/NetCarMasterStyles.css" />
+	<link rel="stylesheet" runat="server" type="text/css" href="~/css/ClientDelete.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+}
+
+<div class="container-delete">
+	<div style="margin-top: 50px"></div>
+	<div>
+		<h1 class="title-delete">Desativar Cliente</h1>
+	</div>
+
+	<hr style="width: 90%; border: 1px solid lightgray" />
+	<br />
+	<span class="subtitle">Tem certeza que gostaria de desativar esse cliente?</span>
+	<div class="content-container">
+		<span class="label">@Html.DisplayNameFor(model => model.nome)</span>
+		<span class="content">@Html.DisplayFor(modelItem => modelItem.nome)</span>
+		<span class="label">@Html.DisplayNameFor(model => model.segmento)</span>
+		<span class="content">@Html.DisplayFor(modelItem => modelItem.segmento)</span>
+		<span class="label">@Html.DisplayNameFor(model => model.email)</span>
+		<span class="content">@Html.DisplayFor(modelItem => modelItem.email)</span>
+		<span class="label">@Html.DisplayNameFor(model => model.status)</span>
+		<span class="content">@Html.DisplayFor(modelItem => modelItem.status)</span>
+
+	</div>
+	<div class="btn-container">
+		<form asp-action="Delete">
+			<input type="hidden" asp-for="cnpj" />
+			<input type="submit" value="Desativar" class="delete-btn" />
+		</form>
+		<div>
+			<a class="back-btn" asp-action="Index">Voltar</a>
+		</div>
+	</div>
+</div>

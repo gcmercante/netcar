@@ -1,0 +1,49 @@
+﻿@model net_car_ASPNETCORE.Models.Aluguel
+@using net_car_ASPNETCORE.Controllers
+
+@{
+	ViewData["Title"] = "Delete";
+	Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+	string cnpj = Util.formatCnpj(Model.cliente);
+}
+
+@section head {
+	<link rel="stylesheet" runat="server" type="text/css" href="~/css/NetCarMasterStyles.css" />
+	<link rel="stylesheet" runat="server" type="text/css" href="~/css/MotoristaDelete.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+}
+
+<div class="container-delete">
+	<div style="margin-top: 50px"></div>
+	<div>
+		<h1 class="title-delete">Cancelar Aluguel</h1>
+	</div>
+
+	<hr style="width: 90%; border: 1px solid lightgray" />
+	<br />
+	<span class="subtitle">Tem certeza que gostaria de cancelar essa viagem?</span>
+	<div class="content-container">
+		<span class="label">@Html.DisplayNameFor(model => model.veiculo)</span>
+		<span class="content">@Html.DisplayFor(modelItem => modelItem.veiculo)</span>
+		<span class="label">@Html.DisplayNameFor(model => model.cliente)</span>
+		<span class="content">@Html.DisplayFor(modelItem => cnpj)</span>
+		<span class="label">@Html.DisplayNameFor(model => model.valor_aluguel)</span>
+		<span class="content">@Html.DisplayFor(modelItem => modelItem.valor_aluguel)</span>
+		<span class="label">@Html.DisplayNameFor(model => model.data_aluguel)</span>
+		<span class="content">@Html.DisplayFor(modelItem => modelItem.data_aluguel)</span>
+		<span class="label">@Html.DisplayNameFor(model => model.duracao)</span>
+		<span class="content">@Html.DisplayFor(modelItem => modelItem.duracao) dias</span>
+		<span class="label">@Html.DisplayNameFor(model => model.status)</span>
+		<span class="content">@Html.DisplayFor(modelItem => modelItem.status) km</span>
+	</div>
+	<div class="btn-container">
+		<form asp-action="Delete">
+			<input type="hidden" asp-for="id" />
+			<input type="submit" value="Cancelar" class="delete-btn" />
+		</form>
+		<div>
+			<a class="back-btn" asp-action="Index">Voltar</a>
+		</div>
+	</div>
+</div>

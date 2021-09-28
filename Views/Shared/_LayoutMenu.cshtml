@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+	<title>@ViewBag.Title</title>
+	<script>
+		function openNav() {
+			document.getElementById("mySidenav").style.width = "400px";
+			document.getElementById("open-nav").style.display = "none";
+		}
+
+		function closeNav() {
+			document.getElementById("mySidenav").style.width = "0";
+			setTimeout(function () { document.getElementById("open-nav").style.display = "initial"; }, 350);
+		}
+	</script>
+	@RenderSection("head", true)
+</head>
+<body>
+	<div id="mySidenav" class="sidenav">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+		<a asp-controller="Home" asp-action="Index" style="margin-top: -20px; margin-left: 20px;"><img src="~/assets/logo_v2.png" style="width: 80%" /></a>
+
+		<a asp-controller="Home" asp-action="Index"><span class="material-icons md-35">dashboard</span><span style="margin-left: 60px;">Dashboard</span></a>
+
+		<a asp-controller="Clientes" asp-action="Index"><span class="material-icons md-35">people</span><span style="margin-left: 60px;">Clientes</span></a>
+
+		<a asp-controller="Veiculos" asp-action="Index"><span class="material-icons md-35">directions_car</span><span style="margin-left: 60px;">Veiculos</span></a>
+
+		<a asp-controller="Motoristas" asp-action="Index"><span class="material-icons md-35">person</span><span style="margin-left: 60px;">Motoristas</span></a>
+
+		<a asp-controller="Viagems" asp-action="Index"><span class="material-icons md-35">explore</span><span style="margin-left: 60px;">Viagens</span></a>
+
+		<a asp-controller="Relatorios" asp-action="Create"><span class="material-icons md-35">list_alt</span><span style="margin-left: 60px;">Relatórios</span></a>
+
+		<a asp-controller="Manutencoes" asp-action="Index"><span class="material-icons md-35">warning</span><span style="margin-left: 60px;">Manutenção</span></a>
+
+		<a asp-controller="Alugueis" asp-action="Index"><span class="material-icons md-35">swap_horiz</span><span style="margin-left: 60px;">Aluguel</span></a>
+
+	</div>
+
+	<span class="navbar-fixed-top" id="open-nav" style="font-size: 30px; cursor: pointer; margin: 5% 0 0 1%; right: unset !important" onclick="openNav()">&#9776;</span>
+	<a asp-controller="Home" asp-action="Login" style="text-decoration: none"><span class="material-icons md-35 exit-btn">exit_to_app</span></a>
+	<div style="clear: both"></div>
+	<div>
+		@RenderBody()
+	</div>
+</body>
+</html>

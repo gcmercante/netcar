@@ -1,0 +1,54 @@
+﻿@model net_car_ASPNETCORE.Models.Viagem
+@using net_car_ASPNETCORE.Controllers;
+
+@{
+	ViewData["Title"] = "Delete";
+	Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+	string cnpj = Util.formatCnpj(Model.cnpj_cliente);
+}
+
+@section head {
+	<link rel="stylesheet" runat="server" type="text/css" href="~/css/NetCarMasterStyles.css" />
+	<link rel="stylesheet" runat="server" type="text/css" href="~/css/MotoristaDelete.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+}
+
+<div class="container-delete">
+	<div style="margin-top: 50px"></div>
+	<div>
+		<h1 class="title-delete">Cancelar Viagem</h1>
+	</div>
+
+	<hr style="width: 90%; border: 1px solid lightgray" />
+	<br />
+	<span class="subtitle">Tem certeza que gostaria de cancelar essa viagem?</span>
+	<div class="content-container">
+		<span class="label">@Html.DisplayNameFor(model => model.numero_chamado)</span>
+		<span class="content">@Html.DisplayFor(modelItem => modelItem.numero_chamado)</span>
+		<span class="label">@Html.DisplayNameFor(model => model.cnh_motorista)</span>
+		<span class="content">@Html.DisplayFor(modelItem => modelItem.cnh_motorista)</span>
+		<span class="label">@Html.DisplayNameFor(model => model.cnpj_cliente)</span>
+		<span class="content">@Html.DisplayFor(modelItem => cnpj)</span>
+		<span class="label">@Html.DisplayNameFor(model => model.documento_veiculo)</span>
+		<span class="content">@Html.DisplayFor(modelItem => modelItem.documento_veiculo)</span>
+		<span class="label">@Html.DisplayNameFor(model => model.status)</span>
+		<span class="content">@Html.DisplayFor(modelItem => modelItem.status)</span>
+		<span class="label">@Html.DisplayNameFor(model => model.destino)</span>
+		<span class="content">@Html.DisplayFor(modelItem => modelItem.destino)</span>
+		<span class="label">@Html.DisplayNameFor(model => model.distancia)</span>
+		<span class="content">@Html.DisplayFor(modelItem => modelItem.distancia) km</span>
+		<span class="label">@Html.DisplayNameFor(model => model.multa)</span>
+		<span class="content">R$ @Html.DisplayFor(modelItem => modelItem.multa)</span>
+	</div>
+	<div class="btn-container">
+		<form asp-action="Delete">
+			<input type="hidden" asp-for="numero_chamado" />
+			<input type="submit" value="Cancelar" class="delete-btn" />
+		</form>
+		<div>
+			<a class="back-btn" asp-action="Index">Voltar</a>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,51 @@
+﻿@model net_car_ASPNETCORE.Models.Motorista
+@using net_car_ASPNETCORE.Controllers;
+
+@{
+	ViewData["Title"] = "Delete";
+	Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+	string cpf = "";
+	string cnpj = "";
+	cnpj = Util.formatCnpj(Model.cnpj_cliente);
+	cpf = Util.formatCpf(Model.cpf);
+}
+
+@section head {
+	<link rel="stylesheet" runat="server" type="text/css" href="~/css/NetCarMasterStyles.css" />
+	<link rel="stylesheet" runat="server" type="text/css" href="~/css/MotoristaDelete.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+}
+
+<div class="container-delete">
+	<div style="margin-top: 50px"></div>
+	<div>
+		<h1 class="title-delete">Desativar Motorista</h1>
+	</div>
+
+	<hr style="width: 90%; border: 1px solid lightgray" />
+	<br />
+	<span class="subtitle">Tem certeza que gostaria de desativar esse motorista?</span>
+	<div class="content-container">
+		<span class="label">@Html.DisplayNameFor(model => model.nome)</span>
+		<span class="content">@Html.DisplayFor(modelItem => modelItem.nome)</span>
+		<span class="label">@Html.DisplayNameFor(model => model.cnh)</span>
+		<span class="content">@Html.DisplayFor(modelItem => modelItem.cnh)</span>
+		<span class="label">@Html.DisplayNameFor(model => model.cpf)</span>
+		<span class="content">@Html.DisplayFor(modelItem => cpf)</span>
+		<span class="label">@Html.DisplayNameFor(model => model.cnpj_cliente)</span>
+		<span class="content">@Html.DisplayFor(modelItem => cnpj)</span>
+		<span class="label">@Html.DisplayNameFor(model => model.status)</span>
+		<span class="content">@Html.DisplayFor(modelItem => modelItem.status)</span>
+
+	</div>
+	<div class="btn-container">
+		<form asp-action="Delete">
+			<input type="hidden" asp-for="cnh" />
+			<input type="submit" value="Desativar" class="delete-btn" />
+		</form>
+		<div>
+			<a class="back-btn" asp-action="Index">Voltar</a>
+		</div>
+	</div>
+</div>

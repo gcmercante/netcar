@@ -1,0 +1,96 @@
+﻿@model IEnumerable<net_car_ASPNETCORE.Models.Veiculo>
+@using net_car_ASPNETCORE.Controllers;
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+}
+
+@section head {
+	<link rel="stylesheet" runat="server" type="text/css" href="~/css/NetCarMasterStyles.css" />
+	<link rel="stylesheet" runat="server" type="text/css" href="~/css/VeiculoIndex.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+}
+<div class="container-index">
+	<div style="margin-top: 50px"></div>
+	<div>
+		<h1 class="title-index">Dashboard</h1>
+	</div>
+
+
+	<hr style="width: 90%; border: 1px solid lightgray" />
+	<br />
+
+	<div class="new-contact">
+		<div class="new-contact-div">
+			<a asp-action="Create" id="create">+ Criar</a>
+		</div>
+	</div>
+	<div style="clear: both"></div>
+	<div class="tableContainer">
+		<table class="indexTable">
+			<tr id="header">
+				<td class="main-content">
+					@Html.DisplayNameFor(model => model.documento_veiculo)
+				</td>
+				<td class="main-content">
+					@Html.DisplayNameFor(model => model.marca)
+				</td>
+				<td class="main-content">
+					@Html.DisplayNameFor(model => model.modelo)
+				</td>
+				<td class="main-content">
+					@Html.DisplayNameFor(model => model.placa)
+				</td>
+				<td class="main-content">
+					@Html.DisplayNameFor(model => model.quilometragem)
+				</td>
+				<td class="main-content">
+					@Html.DisplayNameFor(model => model.status)
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			@foreach (var item in Model)
+			{
+				string placa = Util.formatPlaca(item.placa);
+				<tr>
+					<td class="main-content">
+						@Html.DisplayFor(modelItem => item.documento_veiculo)
+					</td>
+					<td class="main-content">
+						@Html.DisplayFor(modelItem => item.marca)
+					</td>
+					<td class="main-content">
+						@Html.DisplayFor(modelItem => item.modelo)
+					</td>
+					<td class="main-content">
+						@Html.DisplayFor(modelItem => placa)
+					</td>
+					<td class="main-content">
+						@Html.DisplayFor(modelItem => item.quilometragem) km
+					</td>
+					<td class="main-content">
+						@Html.DisplayFor(modelItem => item.status)
+					</td>
+					<td>
+						<a asp-action="Edit" asp-route-id="@item.documento_veiculo" class="material-icons" style="color: #707070; text-decoration: none; font-size: 18px">edit</a>
+					</td>
+					@if (item.status == "Ativo" || item.status == "Em viagem" || item.status == "Em manutenção")
+					{
+						<td>
+							<a asp-action="Delete" asp-route-id="@item.documento_veiculo" class="material-icons" style="color: #990000; text-decoration: none; font-size: 18px">delete</a>
+						</td>
+					}
+					else
+					{
+						<td>
+							<a onclick="return false;" class="material-icons" style="color: #707070; text-decoration: none; font-size: 18px">delete</a>
+						</td>
+					}
+				</tr>
+			}
+		</table>
+	</div>
+</div>

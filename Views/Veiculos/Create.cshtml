@@ -1,0 +1,111 @@
+﻿@model net_car_ASPNETCORE.Models.Veiculo
+
+@{
+	ViewData["Title"] = "Create";
+	Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+}
+
+@section head {
+	<link rel="stylesheet" runat="server" type="text/css" href="~/css/NetCarMasterStyles.css" />
+	<link rel="stylesheet" runat="server" type="text/css" href="~/css/VeiculoCreate.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+}
+
+<div class="container-create">
+	<div style="margin-top: 50px"></div>
+	<div>
+		<h1 class="title-create">Novo Veículo</h1>
+	</div>
+
+	<hr style="width: 90%; border: 1px solid lightgray" />
+	<br />
+	<div class="row">
+		<div class="col-md-4">
+			<form asp-action="Create">
+				<div class="form-group">
+					<div asp-validation-summary="ModelOnly"></div>
+					<div class="line">
+						<div class="form-fields">
+							<label asp-for="documento_veiculo" class="form-label"></label><br />
+							<input asp-for="documento_veiculo" class="form-input" required="required" maxlength="14" /><br />
+							<span asp-validation-for="documento_veiculo"></span>
+						</div>
+						<div class="form-fields">
+							<label asp-for="marca" class="form-label"></label><br />
+							<input asp-for="marca" class="form-input" required="required" /><br />
+							<span asp-validation-for="marca"></span>
+						</div>
+					</div>
+					<div class="line">
+						<div class="form-fields">
+							<label asp-for="cor" class="form-label"></label><br />
+							<input asp-for="cor" class="form-input" required="required" /><br />
+							<span asp-validation-for="cor"></span>
+						</div>
+						<div class="form-fields">
+							<label asp-for="modelo" class="form-label"></label><br />
+							<input asp-for="modelo" class="form-input" required="required" /><br />
+							<span asp-validation-for="modelo"></span>
+						</div>
+					</div>
+					<div class="line">
+						<div class="form-fields">
+							<label asp-for="placa" class="form-label"></label><br />
+							<input asp-for="placa" class="form-input" required="required" /><br />
+							<span asp-validation-for="placa"></span>
+						</div>
+						<div class="form-fields">
+							<label asp-for="quilometragem" class="form-label"></label><br />
+							<input asp-for="quilometragem" class="form-input" required="required" /><br />
+							<span asp-validation-for="quilometragem"></span>
+						</div>
+					</div>
+					<div class="line">
+						<div class="form-fields">
+							<label class="form-label">Seguro</label><br />
+							<select asp-for="seguro" class="client-dropdown">
+								<option selected>
+									Selecione um seguro
+								</option>
+								@for (int i = 0; i < ViewBag.count; i++)
+								{
+									<option value="@ViewBag.contrato_seguro[i]">@ViewBag.seguro[i]</option>
+								}
+							</select>
+						</div>
+						<div class="form-fields">
+							<label asp-for="ipva" class="form-label"></label><br />
+							<input asp-for="ipva" class="form-input" required="required" /><br />
+							<span asp-validation-for="ipva"></span>
+						</div>
+					</div>
+					<div class="line">
+						<div class="form-fields">
+							<label class="form-label">Cliente</label><br />
+							<select asp-for="cliente" class="client-dropdown">
+								<option selected>
+									Selecione um cliente
+								</option>
+								@for (int i = 0; i < ViewBag.clienteCount; i++)
+								{
+									<option value="@ViewBag.valueCnpj[i]">@ViewBag.cnpj[i]</option>
+								}
+							</select>
+						</div>
+						<div class="form-fields">
+
+						</div>
+					</div>
+					<div class="btn-container">
+						<div>
+							<input type="submit" value="Criar" class="submit-btn" asp-for="status" />
+						</div>
+						<div>
+							<a class="back-btn" asp-action="Index">Voltar</a>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

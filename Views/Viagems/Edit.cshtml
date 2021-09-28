@@ -1,0 +1,169 @@
+﻿@model net_car_ASPNETCORE.Models.Viagem
+
+@{
+	ViewData["Title"] = "Edit";
+	Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+}
+
+@section head {
+	<link rel="stylesheet" runat="server" type="text/css" href="~/css/NetCarMasterStyles.css" />
+	<link rel="stylesheet" runat="server" type="text/css" href="~/css/MotoristaEdit.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+}
+<div class="container-create">
+	<div style="margin-top: 50px"></div>
+	<div>
+		<h1 class="title-edit">Editar Viagem</h1>
+	</div>
+
+	<hr style="width: 90%; border: 1px solid lightgray" />
+	<br />
+	<div class="row">
+		<div class="col-md-4">
+			<form asp-action="Edit">
+				<div class="form-group">
+					<div asp-validation-summary="ModelOnly"></div>
+					<div class="line">
+						<div class="form-fields">
+							<label asp-for="numero_chamado" class="form-label"></label><br />
+							<input asp-for="numero_chamado" class="form-input" required="required" maxlength="11" /><br />
+							<span asp-validation-for="numero_chamado"></span>
+						</div>
+						<div class="form-fields">
+							<label class="form-label">Motorista</label><br />
+							<select asp-for="cnh_motorista" class="client-dropdown">
+								<option selected>
+									Selecione um motorista
+								</option>
+								@for (int i = 0; i < ViewBag.motoristaCount; i++)
+								{
+									<option value="@ViewBag.valueCnh[i]">@ViewBag.cnh[i]</option>
+								}
+							</select>
+						</div>
+					</div>
+					<div class="line">
+						<div class="form-fields">
+							<label class="form-label">Cliente</label><br />
+							<select asp-for="cnpj_cliente" class="client-dropdown">
+								<option selected>
+									Selecione um cliente
+								</option>
+								@for (int i = 0; i < ViewBag.clienteCount; i++)
+								{
+									<option value="@ViewBag.valueCnpj[i]">@ViewBag.cnpj[i]</option>
+								}
+							</select>
+						</div>
+						<div class="form-fields">
+							<label class="form-label">Veículo</label><br />
+							<select asp-for="documento_veiculo" class="client-dropdown">
+								<option selected>
+									Selecione um veículo
+								</option>
+								@for (int i = 0; i < ViewBag.veiculoCount; i++)
+								{
+									<option value="@ViewBag.valueDocumento[i]">@ViewBag.documento[i]</option>
+								}
+							</select>
+						</div>
+					</div>
+					<div class="line">
+						<div class="form-fields">
+							<label asp-for="destino" class="form-label"></label><br />
+							<input asp-for="destino" class="form-input" required="required" /><br />
+							<span asp-validation-for="destino"></span>
+						</div>
+						@if (Model.status == "Finalizado")
+						{
+							<div class="form-fields">
+								<label asp-for="distancia" class="form-label"></label><br />
+								<input asp-for="distancia" class="form-input" /><br />
+								<span asp-validation-for="distancia"></span>
+							</div>
+						}
+						else
+						{
+							<div class="form-fields">
+								<label asp-for="distancia" class="form-label"></label><br />
+								<input asp-for="distancia" class="form-input" disabled /><br />
+								<span asp-validation-for="distancia"></span>
+							</div>
+						}
+					</div>
+					<div class="line">
+						@if (Model.status == "Finalizado")
+						{
+							<div class="form-fields">
+								<label asp-for="abastecimento" class="form-label"></label><br />
+								<input asp-for="abastecimento" class="form-input" /><br />
+								<span asp-validation-for="abastecimento"></span>
+							</div>
+							<div class="form-fields">
+								<label asp-for="multa" class="form-label"></label><br />
+								<input asp-for="multa" class="form-input" /><br />
+								<span asp-validation-for="multa"></span>
+							</div>
+						}
+						else
+						{
+							<div class="form-fields">
+								<label asp-for="abastecimento" class="form-label"></label><br />
+								<input asp-for="abastecimento" class="form-input" disabled /><br />
+								<span asp-validation-for="abastecimento"></span>
+							</div>
+							<div class="form-fields">
+								<label asp-for="multa" class="form-label"></label><br />
+								<input asp-for="multa" class="form-input" disabled /><br />
+								<span asp-validation-for="multa"></span>
+							</div>
+						}
+					</div>
+					<div class="line">
+						@if (Model.status == "Finalizado")
+						{
+							<div class="form-fields">
+								<label asp-for="estacionamento" class="form-label"></label><br />
+								<input asp-for="estacionamento" class="form-input" /><br />
+								<span asp-validation-for="estacionamento"></span>
+							</div>
+							<div class="form-fields">
+							</div>
+
+						}
+						else
+						{
+							<div class="form-fields">
+								<label asp-for="estacionamento" class="form-label"></label><br />
+								<input asp-for="estacionamento" class="form-input" disabled /><br />
+								<span asp-validation-for="estacionamento"></span>
+							</div>
+							<div class="form-fields">
+							</div>
+						}
+					</div>
+					<div class="radio-fields">
+						<label class="container">
+							Em andamento
+							<input type="radio" checked="checked" name="status" value="Em andamento" asp-for="status">
+							<span class="checkmark"></span>
+						</label>
+						<label class="container">
+							Finalizado
+							<input type="radio" name="status" value="Finalizado" asp-for="status">
+							<span class="checkmark"></span>
+						</label>
+					</div>
+					<div class="btn-container">
+						<div>
+							<input type="submit" value="Editar" class="submit-btn" />
+						</div>
+						<div>
+							<a class="back-btn" asp-action="Index">Voltar</a>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

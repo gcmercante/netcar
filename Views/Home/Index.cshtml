@@ -1,0 +1,29 @@
+﻿@{
+	ViewData["Title"] = "Home Page";
+	Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+}
+@section head {
+	<link rel="stylesheet" runat="server" type="text/css" href="~/css/NetCarMasterStyles.css" />
+	<link rel="stylesheet" runat="server" type="text/css" href="~/css/ClientDelete.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+}
+
+<div class="container-create">
+	<div style="margin-top: 50px"></div>
+	<div>
+		<h1 class="title-delete">Home Page</h1>
+	</div>
+
+	<hr style="width: 90%; border: 1px solid lightgray" />
+	<br />
+	<div style="width:90%; margin:auto">
+		<div style="width: 47%; float: right;">
+			<p style="font-size: 20pt;">Viagens Finalizadas</p>
+			<p style="font-size: 15pt">@ViewBag.countFinish Viagens</p>
+		</div>
+		<div style="width: 47%">
+			<p style="font-size: 20pt;">Viagens ativas</p>
+			<p style="font-size: 15pt">@ViewBag.count Viagens</p>
+		</div>
+	</div>
+</div>
